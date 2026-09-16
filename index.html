@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Youniversal Energy · MVP Discovery</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -43,6 +45,9 @@
     --sage-bg: #E5F0E8;
     --slate: #7C8598;
     --slate-bg: #EBEEF2;
+    --brand-green: #8AA77E;
+    --brand-gold: #DFBF6B;
+    --brand-ink: #373638;
     --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --sans: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
@@ -1436,6 +1441,34 @@
     section.stage { padding: 64px 0; }
     .stage-flow, .problem-grid, .tier-grid, .tier-grid-2, .tier-grid-4, .flow-paths, .steps, .gloss { grid-template-columns: 1fr; }
   }
+
+  /* ---------- Brand logo ---------- */
+  .brand-logo { height: 34px; width: auto; display: block; }
+  .cover-logo { display: block; height: 96px; width: auto; margin: 0 0 30px; position: relative; z-index: 2; }
+
+  /* ---------- Questionnaire composition ---------- */
+  .qmix { margin-top: 26px; display: grid; gap: 12px; }
+  .qmix-row { display: grid; grid-template-columns: 250px 1fr 42px; align-items: center; gap: 18px; }
+  .qmix-label { font-size: 14px; line-height: 1.35; color: var(--ink-2); }
+  .qmix-row.hot .qmix-label { color: var(--ink); font-weight: 600; }
+  .qmix-track { height: 11px; border-radius: 6px; background: var(--rule-2); overflow: hidden; }
+  .qmix-fill { display: block; height: 100%; border-radius: 6px; }
+  .qmix-n { font-size: 14px; font-weight: 600; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+  .qmix-foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .qmix-foot strong { color: var(--ink-2); font-weight: 600; }
+  .tier-note { font-size: 14.5px; line-height: 1.65; color: var(--ink-2); margin: 0 0 4px; max-width: 78ch; }
+  .tier-note strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 640px) {
+    .qmix-row { grid-template-columns: 1fr 42px; gap: 7px 12px; }
+    .qmix-label { grid-column: 1; grid-row: 1; }
+    .qmix-n { grid-column: 2; grid-row: 1; }
+    .qmix-track { grid-column: 1 / -1; grid-row: 2; }
+    .qmix { gap: 18px; }
+    .brand-logo { height: 27px; }
+    .top-bar-inner { gap: 16px; }
+    .top-bar .micro { text-align: right; line-height: 1.35; }
+    .cover-logo { height: 72px; }
+  }
 </style>
 </head>
 <body>
@@ -1454,8 +1487,7 @@
   <div class="container">
     <div class="top-bar-inner">
       <a class="brand" href="#top" aria-label="Youniversal Energy">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="14" cy="17" r="12" fill="#C9A961" mask="url(#moonmask)"/><path d="M24.5 3.5l1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1z" fill="#7B5FB5"/></svg>
-        <span class="brand-word">Youniversal<span>Energy</span></span>
+        <img class="brand-logo" src="assets/logo-lockup.png" alt="Youniversal Energy" width="1078" height="374">
       </a>
       <div class="micro">Discovery phase · September 2026</div>
     </div>
@@ -1469,6 +1501,7 @@
   <div class="cover-glow" aria-hidden="true"></div>
   <div class="cover-orb" aria-hidden="true"></div>
   <div class="container">
+    <img class="cover-logo" src="assets/logo-mark.png" alt="" aria-hidden="true" width="682" height="770">
     <h1>Your space, your sky,<br><em>one thing to do today</em>.</h1>
     <p class="cover-sub">This document records the discovery phase of Youniversal Energy for you: the problems we chose to solve, the people we solve them for, how the app welcomes them, what it contains, why they come back, and where the subscription begins. Each part builds on the one before, so it reads best in order.</p>
     <div class="cover-note"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></i>Feng Shui follows your method: Classical Flying Stars and Eight Mansions, read from the sitting and facing of the building and the person's trigram number.</div>
@@ -2561,9 +2594,68 @@
 </section>
 
 <!-- ============================================================
+     9 · THE CONSULTATION QUESTIONNAIRE
+     ============================================================ -->
+<section class="stage tinted" id="intake">
+  <div class="container">
+    <div class="stage-tag c-sage"><span class="num">9</span> The consultation questionnaire</div>
+    <h2 class="stage-title">Two audiences, <em>two different forms</em></h2>
+    <p class="stage-lede">The home and business questionnaires are the practice's existing intake. They go to people who have already booked and paid, and they are due 48 hours before the appointment. The home form asks 49 questions across six sections; the business form mirrors it almost exactly. The instinct to cut them to three or four questions is right for one of these audiences and wrong for the other, and the app already solves its own half.</p>
+
+    <div class="stage-why">
+      <span class="stage-why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 10l7-7 7 7"/></svg></span>
+      <div><strong>Why onboarding should not absorb these questions</strong>Section 4 commits to one question, no account, no home profile and no quiz. It already defers the three inputs a home reading needs, the facing side, its degrees and the year the roof went on, until a first room check has earned the effort. That is the deferred profile, already designed in. The questionnaire belongs to a different person at a different moment: someone who has paid, and who will answer.</div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header"><div class="tier-label high">What the form is actually made of</div><div class="tier-rule"></div></div>
+      <p class="tier-note">The form is not heavy because it has 49 questions. Thirteen radio questions cost under a minute of tapping. Twelve required written answers cost the better part of an hour, and that is where people stall. <strong>The cut should be made by answer type, not by question count.</strong> Turn most of the written answers into taps with an optional "tell me more", and the same form takes about six minutes without losing a single input.</p>
+      <div class="qmix">
+        <div class="qmix-row hot"><div class="qmix-label">Required written answers</div><div class="qmix-track"><span class="qmix-fill" style="width:92%;background:var(--coral)"></span></div><div class="qmix-n">12</div></div>
+        <div class="qmix-row"><div class="qmix-label">Radio taps, mostly life areas</div><div class="qmix-track"><span class="qmix-fill" style="width:100%;background:var(--sage)"></span></div><div class="qmix-n">13</div></div>
+        <div class="qmix-row"><div class="qmix-label">Short text fields</div><div class="qmix-track"><span class="qmix-fill" style="width:77%;background:var(--sky)"></span></div><div class="qmix-n">10</div></div>
+        <div class="qmix-row hot"><div class="qmix-label">Liability waiver agreements</div><div class="qmix-track"><span class="qmix-fill" style="width:69%;background:var(--gold)"></span></div><div class="qmix-n">9</div></div>
+        <div class="qmix-row"><div class="qmix-label">Health grid, floorplan, optional essays</div><div class="qmix-track"><span class="qmix-fill" style="width:38%;background:var(--slate)"></span></div><div class="qmix-n">5</div></div>
+      </div>
+      <div class="qmix-foot"><span>Home consultation questionnaire · <strong>49 questions</strong> across six sections</span><span>The business form mirrors it, <strong>maintained separately</strong></span></div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header"><div class="tier-label med">The four that change what happens before the visit</div><div class="tier-rule"></div></div>
+      <p class="tier-note">If the form is cut to four, these are the four. Everything else is conversation material, and it is covered better in person than in a text box.</p>
+      <div class="tier-grid tier-grid-4">
+        <div class="tier-item"><div class="tier-item-eyebrow sage">One</div><div class="tier-item-title">Birth dates for the household</div><div class="tier-item-body">With the answer the trigram formula needs, since the traditional calculation differs for women and men. This is the only genuinely computational input in the whole form: no birth date, no Eight Mansions directions for anyone in the house.</div></div>
+        <div class="tier-item"><div class="tier-item-eyebrow sky">Two</div><div class="tier-item-title">Address and year built</div><div class="tier-item-body">The facing side and its degrees can be derived from the address on a map rather than asked. Together with the year the roof went on, this is what the Flying Stars chart runs on. One field replaces the four questions currently spent circling it.</div></div>
+        <div class="tier-item"><div class="tier-item-eyebrow coral">Three</div><div class="tier-item-title">The floorplan</div><div class="tier-item-body">The highest-leverage item in the form, and currently optional and buried two thirds of the way down. It is what turns a chart into a room-by-room reading. It should be asked early, and asked for warmly, with a photo of a hand sketch accepted.</div></div>
+        <div class="tier-item"><div class="tier-item-eyebrow">Four</div><div class="tier-item-title">The intention for the space</div><div class="tier-item-body">The one open question worth keeping open. It sets the frame for the whole consultation and it is the question clients most want to answer. It is also the same question the app asks at the new moon, phrased for a room instead of a month.</div></div>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header"><div class="tier-label low">Where the rest goes</div><div class="tier-rule"></div></div>
+      <div class="tier-grid">
+        <div class="tier-item"><div class="tier-item-title">The waiver moves to booking</div><div class="tier-item-body">Nine agreements covering scope, results, medical disclaimers and liability are not intake questions and cannot be made optional. They belong at the moment of payment, timestamped and stored against the booking, on their own screen where they can actually be read.</div></div>
+        <div class="tier-item"><div class="tier-item-title">The life areas become taps</div><div class="tier-item-body">The thirteen radio questions map cleanly onto the nine life areas of the bagua, which is what makes them worth keeping. They are cheap to answer and they are the block that most resembles a product feature. In the app they belong in You, asked one at a time when the area comes up.</div></div>
+        <div class="tier-item"><div class="tier-item-title">The deep material becomes the session</div><div class="tier-item-body">History of the house, favourite and least favourite rooms, what changed since moving in, how it feels to walk through the door. These are good questions asked at the wrong moment. They open a conversation, and they are worth more spoken than typed.</div></div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="callout-label">Worth more attention than length</div>
+      <ul class="callout-list">
+        <li><strong>The waiver sits behind forty questions.</strong> Anyone who abandons the form partway has no signed waiver on file and may still arrive for the appointment. Consent should never depend on a client's patience for a questionnaire.</li>
+        <li><strong>The two forms are maintained twice.</strong> Home and business overlap almost entirely and drift apart with every edit. One form that branches at the first question halves the upkeep and keeps the answers comparable.</li>
+        <li><strong>Length may not be the real objection.</strong> The life-area block asks a stranger to rate their romantic life and their finances before they have met. If it underperforms, that is trust, not length, and shortening it will not fix it.</li>
+        <li><strong>The app and the practice should share one profile.</strong> Birth data, floorplan and intention are asked in both places. Collected once and stored once, the consultation starts from what the app already knows.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      GLOSSARY
      ============================================================ -->
-<section class="stage tinted" id="glossary" style="padding: 72px 0;">
+<section class="stage" id="glossary" style="padding: 72px 0;">
   <div class="container">
     <div class="stage-tag c-gold"><span class="num">?</span> Terms used in this document</div>
     <div class="gloss" style="margin-top: 24px;">
